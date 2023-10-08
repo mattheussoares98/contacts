@@ -66,6 +66,9 @@ class _NewContactPageState extends State<NewContactPage> {
     String objectId,
   ) async {
     FocusScope.of(context).unfocus();
+    if (widget.isEditingContact!) {
+      Navigator.of(context).pop();
+    }
     await contactProvider.updateContact(
       context: context,
       objectId: objectId,

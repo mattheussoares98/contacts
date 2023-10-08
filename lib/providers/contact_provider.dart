@@ -179,9 +179,13 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getContacts(BuildContext context) async {
+  Future<void> getContacts(BuildContext context,
+      {bool? notifyListenersWhenCleanContacts = false}) async {
     _contacts.clear();
     _isLoadingGetContacts = true;
+    if (notifyListenersWhenCleanContacts!) {
+      notifyListeners();
+    }
 
     try {
       _contacts = await Back4appApi.getContacts();

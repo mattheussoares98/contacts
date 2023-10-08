@@ -60,6 +60,12 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentPage = 0;
 
   void _changePage(int index, ContactProvider contactProvider) {
+    if (contactProvider.isLoadingAddPhoto ||
+        contactProvider.isLoadingDeleteContact ||
+        contactProvider.isLoadingGetContacts ||
+        contactProvider.isLoadingUpdateContact) {
+      return;
+    }
     setState(() {
       _currentPage = index;
       contactProvider.clearData();
