@@ -51,13 +51,32 @@ class _AllContactsPageState extends State<AllContactsPage> {
                       height: 80,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: FileImage(
-                            File(contact.imagepath),
-                          ),
-                          fit: BoxFit.cover,
-                        ),
+                        color: Theme.of(context).colorScheme.primary,
+                        image: File(contact.imagepath).existsSync()
+                            ? DecorationImage(
+                                image: FileImage(
+                                  File(contact.imagepath),
+                                ),
+                                fit: BoxFit.cover,
+                              )
+                            : null,
                       ),
+                      child: File(contact.imagepath).existsSync()
+                          ? null
+                          : const Center(
+                              child: FittedBox(
+                                child: Padding(
+                                  padding: EdgeInsets.all(12.0),
+                                  child: Text(
+                                    "imagem\nnão\nencontrada",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                     ),
                     const SizedBox(width: 10),
                     Expanded(
