@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:contacts/models/contact_model.dart';
-import 'package:contacts/pages/loading_page.dart';
 import 'package:contacts/pages/new_contact_page.dart';
 import 'package:contacts/providers/contact_provider.dart';
 import 'package:flutter/material.dart';
